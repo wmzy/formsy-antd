@@ -19,6 +19,7 @@
     "src"
   ],
   "dependencies": {
+    "classnames": "^2.2.5"
   },
   "peerDependencies": {
     "formsy-react": "^0.18.0",
