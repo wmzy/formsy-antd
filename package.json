@@ -1,0 +1,88 @@
+{
+  "name": "formsy-antd",
+  "version": "0.0.1",
+  "description": "A formsy-react compatibility wrapper for antd form components.",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "babel ./src -d ./lib",
+    "prepublish": "npm run build",
+    "lint": "eslint --ext .jsx,.js src test && echo \"eslint: no lint errors\"",
+    "test": "PHANTOMJS_BIN=$(npm bin)/phantomjs $(npm bin)/karma start --single-run",
+    "test:watch": "PHANTOMJS_BIN=$(npm bin)/phantomjs $(npm bin)/karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wmzy/formsy-antd.git"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "dependencies": {
+  },
+  "peerDependencies": {
+    "formsy-react": "^0.18.0",
+    "antd": "^1.5.0",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-core": "^6.5.1",
+    "babel-eslint": "^6.0.0",
+    "babel-loader": "^6.2.2",
+    "babel-polyfill": "^6.5.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-1": "^6.3.13",
+    "formsy-react": "^0.18.0",
+    "chai": "^3.5.0",
+    "chai-enzyme": "^0.4.0",
+    "cheerio": "^0.20.0",
+    "enzyme": "^2.2.0",
+    "eslint": "^2.5.1",
+    "eslint-plugin-babel": "^3.1.0",
+    "eslint-plugin-react": "^4.0.0",
+    "json-loader": "^0.5.4",
+    "karma": "^0.13.19",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-mocha": "^0.2.1",
+    "karma-mocha-reporter": "^1.1.5",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-phantomjs-shim": "^1.2.0",
+    "karma-sinon": "^1.0.4",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^1.7.0",
+    "antd": "^1.5.0",
+    "mocha": "^2.4.5",
+    "phantomjs-prebuilt": "^2.1.4",
+    "react": "^15.0.0",
+    "react-addons-test-utils": "^15.0.0",
+    "react-dom": "^15.0.0",
+    "react-tap-event-plugin": "1.0",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0",
+    "webpack": "^1.12.13"
+  },
+  "keywords": [
+    "formsy",
+    "formsy-react",
+    "form",
+    "antd",
+    "ant.design",
+    "React",
+    "jsx",
+    "react-component"
+  ],
+  "author": {
+    "name": "wmzy",
+    "email": "1256573276@qq.com",
+    "url": "https://github.com/wmzy"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wmzy/formsy-antd/issues"
+  },
+  "homepage": "https://github.com/wmzy/formsy-antd"
+}
