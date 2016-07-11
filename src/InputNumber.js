@@ -22,7 +22,7 @@ FormsyInputNumber.propTypes = {
   getValue: PropTypes.func.isRequired
 };
 
-FormsyInputNumber.contenxtTypes = {
+FormsyInputNumber.contextTypes = {
   formsyAntd: PropTypes.shape({
     emitError: PropTypes.func.isRequired
   })

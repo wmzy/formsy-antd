@@ -4,6 +4,10 @@ import {Form} from 'antd';
 const Item = Form.Item;
 
 class FormItem extends Component {
+  static childContextTypes = {
+    formsyAntd: PropTypes.object
+  };
+  
   state = {};
   
   getChildContext() {

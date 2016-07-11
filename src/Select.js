@@ -22,7 +22,7 @@ FormsySelect.propTypes = {
   getValue: PropTypes.func.isRequired
 };
 
-FormsySelect.contenxtTypes = {
+FormsySelect.contextTypes = {
   formsyAntd: PropTypes.shape({
     emitError: PropTypes.func.isRequired
   })

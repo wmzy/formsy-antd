@@ -10,8 +10,8 @@ class FormEx extends Form {
 
   static propTypes = {
     prefixCls: React.PropTypes.string,
-    inline: PropTypes.boolean,
-    horizontal: PropTypes.boolean
+    inline: PropTypes.bool,
+    horizontal: PropTypes.bool
   };
 
   render() {

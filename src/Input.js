@@ -9,7 +9,7 @@ class FormsyInput extends Component {
     getValue: PropTypes.func.isRequired
   };
 
-  static contenxtTypes = {
+  static contextTypes = {
     formsyAntd: PropTypes.shape({
       emitError: PropTypes.func.isRequired
     })
