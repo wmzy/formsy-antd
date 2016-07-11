@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 class FormEx extends Form {
   static defaultProps = {
+    ...Form.defaultProps,
     prefixCls: 'ant-form'
   };
 
@@ -13,17 +14,16 @@ class FormEx extends Form {
     horizontal: PropTypes.boolean
   };
 
-  constructor({prefixCls, inline, horizontal, className, ...props}, context) {
+  render() {
+    const form = super.render();
+    const {prefixCls, inline, horizontal, className, ...props} = form.props;
     const cn = classNames({
       [`${prefixCls}-horizontal`]: horizontal,
       [`${prefixCls}-inline`]: inline,
       [className]: !!className
     });
-    super({...props, className: cn}, context);
-  }
 
-  render() {
-    return super.render();
+    return React.cloneElement(form, {...props, className: cn});
   }
 }
 
