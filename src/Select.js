@@ -1,32 +1,38 @@
-import React, {PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {HOC} from 'formsy-react';
 import {Select} from 'antd';
 
-function FormsySelect(props, context) {
-  if (context.formsyAntd) {
-    context.formsyAntd.emitError(props.getErrorMessage());
+class FormsySelect extends Component {
+  static propTypes = {
+    getErrorMessage: PropTypes.func.isRequired,
+    setValue: PropTypes.func.isRequired,
+    getValue: PropTypes.func.isRequired
+  };
+
+  static contextTypes = {
+    formsyAntd: PropTypes.shape({
+      emitError: PropTypes.func.isRequired
+    })
+  };
+
+  componentWillUpdate() {
+    if (this.context.formsyAntd) {
+      this.context.formsyAntd.emitError(this.props.getErrorMessage());
+    }
   }
 
-  return (
-    <Select
-      {...props}
-      value={props.getValue()}
-      onChange={props.setValue}
-    />
-  );
+  render() {
+    const {getValue, setValue, ...props} = this.props;
+    return (
+      <Select
+        {...props}
+        value={getValue()}
+        onChange={setValue}
+      />
+    );
+  }
 }
 
-FormsySelect.propTypes = {
-  getErrorMessage: PropTypes.func.isRequired,
-  setValue: PropTypes.func.isRequired,
-  getValue: PropTypes.func.isRequired
-};
-
-FormsySelect.contextTypes = {
-  formsyAntd: PropTypes.shape({
-    emitError: PropTypes.func.isRequired
-  })
-};
 
 const HOCFormsySelect = HOC(FormsySelect);
 HOCFormsySelect.Option = Select.Option;

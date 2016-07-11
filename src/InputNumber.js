@@ -1,31 +1,36 @@
-import React, {PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {HOC} from 'formsy-react';
 import {InputNumber} from 'antd';
 
-function FormsyInputNumber(props, context) {
-  if (context.formsyAntd) {
-    context.formsyAntd.emitError(props.getErrorMessage());
+class FormsyInputNumber extends Component {
+  static propTypes = {
+    getErrorMessage: PropTypes.func.isRequired,
+    setValue: PropTypes.func.isRequired,
+    getValue: PropTypes.func.isRequired
+  };
+
+  static contextTypes = {
+    formsyAntd: PropTypes.shape({
+      emitError: PropTypes.func.isRequired
+    })
+  };
+
+  componentWillUpdate() {
+    if (this.context.formsyAntd) {
+      this.context.formsyAntd.emitError(this.props.getErrorMessage());
+    }
   }
 
-  return (
-    <InputNumber
-      {...props}
-      value={props.getValue()}
-      onChange={props.setValue}
-    />
-  );
+  render() {
+    const {getValue, setValue, ...props} = this.props;
+    return (
+      <InputNumber
+        {...props}
+        value={getValue()}
+        onChange={setValue}
+      />
+    );
+  }
 }
-
-FormsyInputNumber.propTypes = {
-  getErrorMessage: PropTypes.func.isRequired,
-  setValue: PropTypes.func.isRequired,
-  getValue: PropTypes.func.isRequired
-};
-
-FormsyInputNumber.contextTypes = {
-  formsyAntd: PropTypes.shape({
-    emitError: PropTypes.func.isRequired
-  })
-};
 
 export default HOC(FormsyInputNumber);
