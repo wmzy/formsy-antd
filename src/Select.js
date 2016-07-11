@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {HOC} from 'formsy-react';
 import {Select} from 'antd';
 
-function FormsySelect(props) {
+function FormsySelect(props, context) {
   if (context.formsyAntd) {
     context.formsyAntd.emitError(props.getErrorMessage());
   }
