@@ -1,6 +1,6 @@
 {
   "name": "formsy-antd",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A formsy-react compatibility wrapper for antd form components.",
   "main": "./lib/index.js",
   "scripts": {
