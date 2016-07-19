@@ -31,7 +31,7 @@ class FormsyInput extends Component {
     return (
       <Input
         {...props}
-        value={this.props.getValue()}
+        value={this.props.getValue() || ''}
         onChange={this.handleChange}
       />
     );

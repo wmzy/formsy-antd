@@ -29,7 +29,7 @@ class FormsySelect extends Component {
     return (
       <Select
         {...props}
-        value={getValue()}
+        value={getValue() || ''}
         onChange={setValue}
       />
     );

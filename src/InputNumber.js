@@ -29,7 +29,7 @@ class FormsyInputNumber extends Component {
     return (
       <InputNumber
         {...props}
-        value={getValue()}
+        value={getValue() || ''}
         onChange={setValue}
       />
     );
