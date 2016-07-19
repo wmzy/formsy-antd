@@ -4,6 +4,7 @@ import {Select} from 'antd';
 
 class FormsySelect extends Component {
   static propTypes = {
+    isPristine: PropTypes.func.isRequired,
     getErrorMessage: PropTypes.func.isRequired,
     setValue: PropTypes.func.isRequired,
     getValue: PropTypes.func.isRequired
@@ -16,7 +17,7 @@ class FormsySelect extends Component {
   };
 
   componentWillUpdate() {
-    if (this.context.formsyAntd && !this.isPristine()) {
+    if (this.context.formsyAntd && !this.props.isPristine()) {
       const message = this.props.getErrorMessage();
       const status = message === null ? 'success' : 'error';
       this.context.formsyAntd.emitError(message, status);
