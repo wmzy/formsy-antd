@@ -16,8 +16,10 @@ class FormsySelect extends Component {
   };
 
   componentWillUpdate() {
-    if (this.context.formsyAntd) {
-      this.context.formsyAntd.emitError(this.props.getErrorMessage());
+    if (this.context.formsyAntd && !this.isPristine()) {
+      const message = this.props.getErrorMessage();
+      const status = message === null ? 'success' : 'error';
+      this.context.formsyAntd.emitError(message, status);
     }
   }
 

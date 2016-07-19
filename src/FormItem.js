@@ -7,21 +7,21 @@ class FormItem extends Component {
   static childContextTypes = {
     formsyAntd: PropTypes.object
   };
-  
+
   state = {};
-  
+
   getChildContext() {
     return {formsyAntd: {
       emitError: this.handleError
     }};
   }
 
-  handleError = (message) => this.setState({message});
+  handleError = (help, validateStatus) => this.setState({help, validateStatus});
 
   render() {
     return (
       <Item
-        help={this.state.message}
+        {...this.state}
         {...this.props}
       />
     );
