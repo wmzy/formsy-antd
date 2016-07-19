@@ -22,7 +22,7 @@ class FormsySelect extends Component {
   }
 
   render() {
-    const {getValue, setValue, ...props} = this.props;
+    const {getValue, setValue, required, ...props} = this.props;
     return (
       <Select
         {...props}

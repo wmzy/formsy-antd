@@ -24,9 +24,10 @@ class FormsyInput extends Component {
   handleChange = ({target}) => this.props.setValue(target.value);
 
   render() {
+    const {required, ...props} = this.props;
     return (
       <Input
-        {...this.props}
+        {...props}
         value={this.props.getValue()}
         onChange={this.handleChange}
       />
