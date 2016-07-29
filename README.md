@@ -28,10 +28,12 @@ import Input from 'formsy-antd/lib/Input';
 OR:
 
 ```js
-import { Input, FormItem } from 'formsy-antd';
+import { Input, FormItem, Form } from 'formsy-antd';
 ```
 
-### Events
+### Todos
+0. 单元测试
+0. 支持更多的表单控件
 
 
 ### Examples
