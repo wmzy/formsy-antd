@@ -33,7 +33,7 @@ class FormsyRadioGroup extends Component {
     return (
       <RadioGroup
         {...props}
-        checked={getValue() || null}
+        value={getValue() || null}
         onChange={this.handleChange}
       />
     );
