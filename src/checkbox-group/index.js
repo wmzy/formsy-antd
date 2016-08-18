@@ -1,8 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import {HOC} from 'formsy-react';
-import {Checkbox} from 'antd';
+import Checkbox from 'antd/lib/checkbox';
 
-class FormsyCheckbox extends Component {
+const CheckboxGroup = Checkbox.Group;
+
+class FormsyCheckboxGroup extends Component {
   static propTypes = {
     isPristine: PropTypes.func.isRequired,
     getErrorMessage: PropTypes.func.isRequired,
@@ -24,18 +26,16 @@ class FormsyCheckbox extends Component {
     }
   }
 
-  handleChange = ({target}) => this.props.setValue(target.checked);
-
   render() {
-    const {required, getValue, ...props} = this.props;
+    const {required, getValue, setValue, ...props} = this.props;
     return (
-      <Checkbox
+      <CheckboxGroup
         {...props}
-        checked={getValue() || false}
-        onChange={this.handleChange}
+        value={getValue() || []}
+        onChange={setValue}
       />
     );
   }
 }
 
-export default HOC(FormsyCheckbox);
+export default HOC(FormsyCheckboxGroup);

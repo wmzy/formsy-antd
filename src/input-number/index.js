@@ -1,10 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {HOC} from 'formsy-react';
-import {Radio} from 'antd';
+import InputNumber from 'antd/lib/input-number';
 
-const RadioGroup = Radio.Group;
-
-class FormsyRadioGroup extends Component {
+class FormsyInputNumber extends Component {
   static propTypes = {
     isPristine: PropTypes.func.isRequired,
     getErrorMessage: PropTypes.func.isRequired,
@@ -26,18 +24,16 @@ class FormsyRadioGroup extends Component {
     }
   }
 
-  handleChange = ({target}) => this.props.setValue(target.value);
-
   render() {
-    const {required, getValue, ...props} = this.props;
+    const {getValue, setValue, required, ...props} = this.props;
     return (
-      <RadioGroup
+      <InputNumber
         {...props}
-        value={getValue() || null}
-        onChange={this.handleChange}
+        value={getValue() || ''}
+        onChange={setValue}
       />
     );
   }
 }
 
-export default HOC(FormsyRadioGroup);
+export default HOC(FormsyInputNumber);

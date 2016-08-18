@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {HOC} from 'formsy-react';
-import {Switch} from 'antd';
+import Switch from 'antd/lib/switch';
 
 class FormsySwitch extends Component {
   static propTypes = {

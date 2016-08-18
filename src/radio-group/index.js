@@ -1,8 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import {HOC} from 'formsy-react';
-import {Select} from 'antd';
+import Radio from 'antd/lib/radio';
 
-class FormsySelect extends Component {
+const RadioGroup = Radio.Group;
+
+class FormsyRadioGroup extends Component {
   static propTypes = {
     isPristine: PropTypes.func.isRequired,
     getErrorMessage: PropTypes.func.isRequired,
@@ -24,20 +26,18 @@ class FormsySelect extends Component {
     }
   }
 
+  handleChange = ({target}) => this.props.setValue(target.value);
+
   render() {
-    const {getValue, setValue, required, ...props} = this.props;
+    const {required, getValue, ...props} = this.props;
     return (
-      <Select
+      <RadioGroup
         {...props}
-        value={getValue() || ''}
-        onChange={setValue}
+        value={getValue() || null}
+        onChange={this.handleChange}
       />
     );
   }
 }
 
-
-const HOCFormsySelect = HOC(FormsySelect);
-HOCFormsySelect.Option = Select.Option;
-
-export default HOCFormsySelect;
+export default HOC(FormsyRadioGroup);
