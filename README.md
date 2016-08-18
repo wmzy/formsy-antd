@@ -22,7 +22,7 @@ $ npm install --save formsy-react
 ### ES6 Imports
 
 ```js
-import Input from 'formsy-antd/lib/Input';
+import Input from 'formsy-antd/lib/input'; // 按需加载
 ```
 
 OR:
@@ -30,6 +30,12 @@ OR:
 ```js
 import { Input, FormItem, Form } from 'formsy-antd';
 ```
+
+**注意**：需要引入antd样式(或使用[babel-plugin-antd](https://github.com/ant-design/babel-plugin-antd)插件)：
+```js
+import 'antd/dist/antd.css'
+```
+参考：http://ant.design/docs/react/introduce
 
 ### Todos
 0. 单元测试

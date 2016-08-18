@@ -11,8 +11,10 @@ const config = {
     path.join(__dirname, '/src/client.js'),
   ],
   resolve: {
-    extensions: ["", ".js"]
+    extensions: ["", ".js"],
+    fallback: path.join(__dirname, "node_modules")
   },
+  resolveLoader: { fallback: path.join(__dirname, "node_modules") },
   devServer:{
     contentBase: 'src',
     devtool: 'cheap-module-eval-source-map',

@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from 'react';
-import {Form, FormItem, Input, Select} from 'formsy-antd';
+import {Form, FormItem, Input} from 'formsy-antd';
 import {Button} from 'antd';
 
 class APP extends Component {
@@ -24,7 +24,6 @@ class APP extends Component {
           required
         />
       </FormItem>
-      <Button type="primary">tt</Button>
       <button type="submit">提交</button>
     </Form>)
   }
