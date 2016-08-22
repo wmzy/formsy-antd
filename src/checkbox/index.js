@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {HOC} from 'formsy-react';
 import Checkbox from 'antd/lib/checkbox';
+import {omitFormsyProps} from '../util';
 
 class FormsyCheckbox extends Component {
   static propTypes = {
@@ -27,7 +28,8 @@ class FormsyCheckbox extends Component {
   handleChange = ({target}) => this.props.setValue(target.checked);
 
   render() {
-    const {required, getValue, ...props} = this.props;
+    const {getValue} = this.props;
+    const props = omitFormsyProps(this.props);
     return (
       <Checkbox
         {...props}

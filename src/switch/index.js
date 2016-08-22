@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {HOC} from 'formsy-react';
 import Switch from 'antd/lib/switch';
+import {omitFormsyProps} from '../util';
 
 class FormsySwitch extends Component {
   static propTypes = {
@@ -25,7 +26,8 @@ class FormsySwitch extends Component {
   }
 
   render() {
-    const {required, getValue, setValue, ...props} = this.props;
+    const {getValue, setValue} = this.props;
+    const props = omitFormsyProps(this.props);
     return (
       <Switch
         {...props}

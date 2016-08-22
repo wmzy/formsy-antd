@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {HOC} from 'formsy-react';
 import Input from 'antd/lib/input';
+import {omitFormsyProps} from '../util';
 
 class FormsyInput extends Component {
   static propTypes = {
@@ -27,7 +28,8 @@ class FormsyInput extends Component {
   handleChange = ({target}) => this.props.setValue(target.value);
 
   render() {
-    const {required, getValue, ...props} = this.props;
+    const {getValue} = this.props;
+    const props = omitFormsyProps(this.props);
     return (
       <Input
         {...props}

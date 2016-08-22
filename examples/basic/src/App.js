@@ -14,13 +14,14 @@ class APP extends Component {
   render() {
     return (<Form onSubmit={this.handleSubmit}>
       <FormItem
+        required
         label="name"
       >
         <Input
           name="name"
           value="wmzy"
           validations="minLength:4"
-          validationsError="minLength:4"
+          validationError="minLength:4"
           required
         />
       </FormItem>

@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {HOC} from 'formsy-react';
 import Radio from 'antd/lib/radio';
+import {omitFormsyProps} from '../util';
 
 const RadioGroup = Radio.Group;
 
@@ -29,7 +30,8 @@ class FormsyRadioGroup extends Component {
   handleChange = ({target}) => this.props.setValue(target.value);
 
   render() {
-    const {required, getValue, ...props} = this.props;
+    const {getValue} = this.props;
+    const props = omitFormsyProps(this.props);
     return (
       <RadioGroup
         {...props}

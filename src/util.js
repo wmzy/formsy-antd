@@ -1,6 +1,33 @@
 import React, {Component, PropTypes} from 'react';
 import {HOC} from 'formsy-react';
 
+export function omitFormsyProps(props) {
+  const {
+    setValidations,
+    setValue,
+    resetValue,
+    getValue,
+    hasValue,
+    getErrorMessage,
+    getErrorMessages,
+    isFormDisabled,
+    isValid,
+    isPristine,
+    isFormSubmitted,
+    isRequired,
+    showRequired,
+    showError,
+    isValidValue,
+    validations,
+    // required,
+    validationError,
+    validationErrors,
+    formNoValidate,
+    ...rest
+  } = props;
+  return rest;
+}
+
 export function formsyComponent(OriginalComponent, noValue) {
   class FormsyComponent extends Component {
     static propTypes = {
@@ -25,7 +52,8 @@ export function formsyComponent(OriginalComponent, noValue) {
     }
 
     render() {
-      const {getValue, setValue, required, ...props} = this.props;
+      const {getValue, setValue} = this.props;
+      const props = omitFormsyProps(this.props);
       return (
         <OriginalComponent
           {...props}
