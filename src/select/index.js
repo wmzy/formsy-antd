@@ -28,11 +28,10 @@ class FormsySelect extends Component {
   render() {
     const {getValue, setValue} = this.props;
     const props = omitFormsyProps(this.props);
-    const defaultValue = (props.tags || props.multiple) ? [] : '';
     return (
       <Select
         {...props}
-        value={getValue() || defaultValue}
+        value={getValue()}
         onChange={setValue}
       />
     );
