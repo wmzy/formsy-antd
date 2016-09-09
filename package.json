@@ -4,7 +4,7 @@
   "description": "A formsy-react compatibility wrapper for antd form components.",
   "main": "./lib/index.js",
   "scripts": {
-    "build": "babel ./src -d ./lib",
+    "build": "rm -rf ./lib && babel ./src -d ./lib",
     "prepublish": "npm run build",
     "lint": "eslint --ext .jsx,.js src test && echo \"eslint: no lint errors\"",
     "test": "PHANTOMJS_BIN=$(npm bin)/phantomjs $(npm bin)/karma start --single-run",
