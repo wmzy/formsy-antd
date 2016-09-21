@@ -19,10 +19,13 @@ class FormItem extends Component {
   handleError = (help, validateStatus) => this.setState({help, validateStatus});
 
   render() {
+    const {help, validateStatus} = this.state;
+    const {helpP, validateStatusP, ...props} = this.props;
     return (
       <Item
-        {...this.props}
-        {...this.state}
+        {...props}
+        help={help || helpP}
+        validateStatus={validateStatus || validateStatusP}
       />
     );
   }
