@@ -21,8 +21,8 @@ class FormItem extends Component {
   render() {
     return (
       <Item
-        {...this.state}
         {...this.props}
+        {...this.state}
       />
     );
   }
