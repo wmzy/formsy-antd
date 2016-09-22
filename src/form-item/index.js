@@ -20,7 +20,8 @@ class FormItem extends Component {
 
   render() {
     const {help, validateStatus} = this.state;
-    const {helpP, validateStatusP, ...props} = this.props;
+    const {help: helpP, validateStatus: validateStatusP, ...props} = this.props;
+
     return (
       <Item
         {...props}
