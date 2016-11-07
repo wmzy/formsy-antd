@@ -7,3 +7,4 @@ export Switch from './switch';
 export Checkbox from './checkbox';
 export CheckboxGroup from './checkbox-group';
 export RadioGroup from './radio-group';
+export Slider from './slider';
