@@ -14,7 +14,7 @@
     "antd": "^1.10.0",
     "babel-core": "^6.13.2",
     "babel-loader": "^6.2.4",
-    "babel-plugin-antd": "^0.5.1",
+    "babel-plugin-import": "^1.1.0",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
@@ -31,10 +31,10 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "antd": "^1.9.1",
+    "antd": "^2.6.3",
     "formsy-antd": "*",
     "formsy-react": "^0.18.1",
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0"
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }
