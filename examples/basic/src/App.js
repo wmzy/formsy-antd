@@ -60,11 +60,9 @@ class APP extends Component {
         <button type="submit">提交</button>
       </Form>
       <h3>model:</h3>
-      <p>
-        <pre><code>
+      <pre><code>
           {JSON.stringify(model, null, '  ')}
         </code></pre>
-      </p>
     </div>)
   }
 }
