@@ -1,5 +1,6 @@
-import React, {Component, PropTypes} from 'react';
-import {HOC} from 'formsy-react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {withFormsy} from 'formsy-react';
 import InputNumber from 'antd/lib/input-number';
 import {omitFormsyProps} from '../util';
 
@@ -38,4 +39,4 @@ class FormsyInputNumber extends Component {
   }
 }
 
-export default HOC(FormsyInputNumber);
+export default withFormsy(FormsyInputNumber);

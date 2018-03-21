@@ -1,5 +1,6 @@
-import React, {Component, PropTypes} from 'react';
-import {HOC} from 'formsy-react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {withFormsy} from 'formsy-react';
 import Select from 'antd/lib/select';
 import {omitFormsyProps} from '../util';
 
@@ -39,7 +40,7 @@ class FormsySelect extends Component {
 }
 
 
-const HOCFormsySelect = HOC(FormsySelect);
+const HOCFormsySelect = withFormsy(FormsySelect);
 HOCFormsySelect.Option = Select.Option;
 
 export default HOCFormsySelect;

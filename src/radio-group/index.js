@@ -1,5 +1,6 @@
-import React, {Component, PropTypes} from 'react';
-import {HOC} from 'formsy-react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {withFormsy} from 'formsy-react';
 import Radio from 'antd/lib/radio';
 import {omitFormsyProps} from '../util';
 
@@ -42,4 +43,4 @@ class FormsyRadioGroup extends Component {
   }
 }
 
-export default HOC(FormsyRadioGroup);
+export default withFormsy(FormsyRadioGroup);

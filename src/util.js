@@ -1,5 +1,6 @@
-import React, {Component, PropTypes} from 'react';
-import {HOC} from 'formsy-react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {withFormsy} from 'formsy-react';
 
 export function omitFormsyProps(props) {
   const {
@@ -23,6 +24,7 @@ export function omitFormsyProps(props) {
     validationError,
     validationErrors,
     formNoValidate,
+    innerRef,
     ...rest
   } = props;
   return rest;
@@ -64,5 +66,5 @@ export function formsyComponent(OriginalComponent, noValue) {
     }
   }
 
-  return HOC(FormsyComponent);
+  return withFormsy(FormsyComponent);
 }

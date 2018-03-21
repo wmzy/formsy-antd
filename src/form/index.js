@@ -1,31 +1,48 @@
-import React, {Component, PropTypes} from 'react';
-import {Form} from 'formsy-react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import Formsy from 'formsy-react';
 import classNames from 'classnames';
 
-class FormEx extends Form {
+class Form extends Component {
   static defaultProps = {
-    ...Form.defaultProps,
-    prefixCls: 'ant-form'
+    ...Formsy.defaultProps,
+    prefixCls: "ant-form"
   };
 
   static propTypes = {
-    prefixCls: React.PropTypes.string,
+    prefixCls: PropTypes.string,
     inline: PropTypes.bool,
     horizontal: PropTypes.bool
   };
 
+  setRef = form => void (this.form = form);
+
+  reset() {
+    return this.form.reset();
+  }
+
+  getModel() {
+    return this.form.getModel();
+  }
+
+  validationErrors(...arg) {
+    return this.form.validationErrors(...arg);
+  }
+
+  updateInputsWithError(...arg) {
+    return this.form.updateInputsWithError(...arg);
+  }
+
   render() {
-    const form = super.render();
-    const {prefixCls, inline, horizontal, className, ...props} = form.props;
+    const { prefixCls, inline, layout, className, ...props } = this.props;
     const cn = classNames({
-      [`${prefixCls}-horizontal`]: horizontal,
-      [`${prefixCls}-inline`]: inline,
+      [`${prefixCls}-${layout}`]: !!layout,
       [className]: !!className
     });
 
-    return React.cloneElement(form, {...props, className: cn});
+    return <Formsy ref={this.setRef} {...props} className={cn} />;
   }
 }
 
-export default FormEx;
+export default Form;
 
