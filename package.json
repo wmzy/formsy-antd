@@ -4,10 +4,12 @@
   "description": "A formsy-react compatibility wrapper for antd form components.",
   "main": "./lib/index.js",
   "scripts": {
-    "build": "rm -rf ./lib && babel ./src -d ./lib",
+    "build": "BABEL_ENV=production rm -rf ./lib && babel ./src -d ./lib",
     "prepublish": "npm run build",
     "lint": "eslint --ext .jsx,.js src test && echo \"eslint: no lint errors\"",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build-storybook": "BABEL_ENV=development build-storybook -c .storybook",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "repository": {
     "type": "git",
