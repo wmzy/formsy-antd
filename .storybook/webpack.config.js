@@ -1,5 +1,7 @@
 const path = require('path');
 
+process.env.BABEL_ENV = 'development';
+
 module.exports = {
   resolve: {
     alias: {
