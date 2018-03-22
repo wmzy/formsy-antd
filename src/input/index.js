@@ -21,6 +21,8 @@ class FormsyInput extends Component {
   componentWillUpdate() {
     if (this.context.formsyAntd && !this.props.isPristine()) {
       const message = this.props.getErrorMessage();
+      if (this.message === message) return;
+      this.message = message;
       const status = message === null ? 'success' : 'error';
       this.context.formsyAntd.emitError(message, status);
     }
