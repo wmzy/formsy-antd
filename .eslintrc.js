@@ -92,6 +92,7 @@ module.exports = {
     'react/jsx-curly-spacing': 'error',
     'react/jsx-equals-spacing': 'error',
     'react/jsx-handler-names': 'error',
+    'react/jsx-indent': ['error', 2],
     'react/jsx-indent-props': ['error', 2],
     'react/jsx-max-props-per-line': ['error', {maximum: 3}],
     'react/jsx-no-duplicate-props': 'error',
@@ -100,6 +101,7 @@ module.exports = {
     'react/jsx-space-before-closing': 'error',
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
+    'react/jsx-wrap-multilines': 'error',
     'react/no-danger': 'error',
     'react/no-did-mount-set-state': 'error',
     'react/no-did-update-set-state': 'error',
@@ -111,12 +113,9 @@ module.exports = {
     'react/prefer-es6-class': 'off', // Wishlist, one day
     'react/prop-types': 'error',
     'react/react-in-jsx-scope': 'error',
-    'react/require-extension': 'error',
     'react/self-closing-comp': 'error',
     'react/sort-comp': 'error',
     'react/sort-prop-types': 'error',
-    'react/wrap-multilines': 'error',
-    'react/jsx-indent': ['error', 2],
 
     // React Disabled
     'react/jsx-no-bind': 'off',
