@@ -4,6 +4,7 @@ import {withFormsy} from 'formsy-react';
 
 export function omitFormsyProps(props) {
   const {
+    /* eslint-disable no-unused-vars */
     setValidations,
     setValue,
     resetValue,
@@ -25,18 +26,31 @@ export function omitFormsyProps(props) {
     validationErrors,
     formNoValidate,
     innerRef,
+    /* eslint-enable no-unused-vars */
     ...rest
   } = props;
   return rest;
 }
 
+export function pickSubComponent(OriginalComponent) {
+  const subComponents = {};
+  for (const k in OriginalComponent) {
+    if (k >= 'A' && k <= 'Z') {
+      const fn = OriginalComponent[k];
+      if (typeof fn === 'function') subComponents[k] = fn;
+    }
+  }
+  return subComponents;
+}
+
 export function formsyComponent(OriginalComponent, noValue) {
   class FormsyComponent extends Component {
     static propTypes = {
-      isPristine: PropTypes.func.isRequired,
       getErrorMessage: PropTypes.func.isRequired,
-      setValue: PropTypes.func.isRequired,
-      getValue: PropTypes.func.isRequired
+      getValue: PropTypes.func.isRequired,
+      isPristine: PropTypes.func.isRequired,
+      onChange: PropTypes.func,
+      setValue: PropTypes.func.isRequired
     };
 
     static contextTypes = {
@@ -55,18 +69,24 @@ export function formsyComponent(OriginalComponent, noValue) {
       }
     }
 
+    handleChange = (value, ...rest) => {
+      const {onChange, setValue} = this.props;
+      setValue(value);
+      if (onChange) onChange(value, ...rest);
+    }
+
     render() {
-      const {getValue, setValue} = this.props;
+      const {getValue} = this.props;
       const props = omitFormsyProps(this.props);
       return (
         <OriginalComponent
           {...props}
           value={getValue() || noValue}
-          onChange={setValue}
+          onChange={this.handleChange}
         />
       );
     }
   }
 
-  return withFormsy(FormsyComponent);
+  return Object.assign(withFormsy(FormsyComponent), pickSubComponent(OriginalComponent));
 }

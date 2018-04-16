@@ -10,7 +10,7 @@ import { Icon, Button } from 'antd';
 const withState2 = _.curry(withState);
 
 function HorizontalLoginForm(store) {
-  const handleSubmit = (data) => {
+  const handleSubmit = data => {
     action('submit')(data);
   };
 

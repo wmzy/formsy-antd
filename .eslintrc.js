@@ -24,10 +24,10 @@ module.exports = {
     // Errors
     'array-bracket-spacing': ['error', 'never'],
     'arrow-spacing': 'error',
-    'arrow-parens': 'error',
+    'arrow-parens': ['error', 'as-needed'],
     'block-spacing': ['error', 'always'],
     'brace-style': 'error',
-    'comma-dangle': ['error', 'always-multiline'],
+    'comma-dangle': ['error', 'never'],
     'comma-spacing': ['error', {before: false, after: true}],
     'comma-style': ['error', 'last'],
     'computed-property-spacing': ['error', 'never'],
@@ -82,12 +82,9 @@ module.exports = {
     'strict': 'off',
     'no-case-declarations': 'off',
 
-    // Babel
-    'babel/object-curly-spacing': ['error', 'always'],
-
     // React
     'react/display-name': 'error',
-    'react/jsx-boolean-value': ['error', 'always'],
+    'react/jsx-boolean-value': ['error'],
     'react/jsx-closing-bracket-location': 'error',
     'react/jsx-curly-spacing': 'error',
     'react/jsx-equals-spacing': 'error',

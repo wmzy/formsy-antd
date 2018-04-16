@@ -31,7 +31,7 @@ OR:
 import { Input, FormItem, Form } from 'formsy-antd';
 ```
 
-**注意**：需要引入antd样式(或使用 <del>[babel-plugin-antd](https://github.com/ant-design/babel-plugin-antd)</del> [babel-plugin-import](https://github.com/ant-design/)插件)：
+**注意**：需要引入antd样式(或使用 <del>[babel-plugin-antd](https://github.com/ant-design/babel-plugin-antd)</del> [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)插件)：
 ```js
 import 'antd/dist/antd.css'
 ```
