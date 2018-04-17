@@ -23,6 +23,14 @@ module.exports = {
           }
         ],
         include: path.resolve(__dirname, '../node_modules/antd/')
+      },
+      {
+        test: /\.css$/,
+        loaders: [
+          'style-loader',
+          'css-loader'
+        ],
+        include: path.resolve(__dirname, '../stories/')
       }
     ]
   }

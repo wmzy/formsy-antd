@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {withFormsy} from 'formsy-react';
+import { withFormsy } from 'formsy-react';
 
 export function omitFormsyProps(props) {
   const {
@@ -43,12 +43,23 @@ export function pickSubComponent(OriginalComponent) {
   return subComponents;
 }
 
+export function mappingChangeEvent(OriginalComponent, mapper, eventName = 'onChange') {
+  return function FormsyableComponent(props) {
+    const fn = props[eventName];
+    const p = {
+      [eventName]: fn && ((...params) => fn(mapper(...params)))
+    };
+    return (<OriginalComponent {...props} {...p} />);
+  };
+}
+
 export function formsyComponent(OriginalComponent, noValue) {
   class FormsyComponent extends Component {
     static propTypes = {
       getErrorMessage: PropTypes.func.isRequired,
       getValue: PropTypes.func.isRequired,
       isPristine: PropTypes.func.isRequired,
+      isValidValue: PropTypes.func.isRequired,
       onChange: PropTypes.func,
       setValue: PropTypes.func.isRequired
     };
@@ -59,24 +70,25 @@ export function formsyComponent(OriginalComponent, noValue) {
       })
     };
 
-    componentWillUpdate() {
-      if (this.context.formsyAntd && !this.props.isPristine()) {
-        const message = this.props.getErrorMessage();
-        if (this.message === message) return;
-        this.message = message;
-        const status = message === null ? 'success' : 'error';
-        this.context.formsyAntd.emitError(message, status);
-      }
+    componentDidUpdate() {
+      if (!this.context.formsyAntd) return;
+
+      const {isPristine, isValidValue} = this.props;
+      const message = isPristine() || isValidValue() ? null : this.props.getErrorMessage();
+      if (this.message === message) return;
+      this.message = message;
+      const status = message === null ? 'success' : 'error';
+      this.context.formsyAntd.emitError(message, status);
     }
 
     handleChange = (value, ...rest) => {
-      const {onChange, setValue} = this.props;
+      const { onChange, setValue } = this.props;
       setValue(value);
       if (onChange) onChange(value, ...rest);
     }
 
     render() {
-      const {getValue} = this.props;
+      const { getValue } = this.props;
       const props = omitFormsyProps(this.props);
       return (
         <OriginalComponent
