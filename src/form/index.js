@@ -6,13 +6,13 @@ import classNames from 'classnames';
 class Form extends Component {
   static defaultProps = {
     ...Formsy.defaultProps,
-    prefixCls: "ant-form"
+    prefixCls: 'ant-form'
   };
 
   static propTypes = {
-    prefixCls: PropTypes.string,
-    inline: PropTypes.bool,
-    horizontal: PropTypes.bool
+    className: PropTypes.string,
+    layout: PropTypes.string,
+    prefixCls: PropTypes.string
   };
 
   setRef = form => void (this.form = form);
@@ -21,12 +21,12 @@ class Form extends Component {
     return this.form.reset();
   }
 
-  getModel() {
-    return this.form.getModel();
+  submit() {
+    return this.form.submit();
   }
 
-  validationErrors(...arg) {
-    return this.form.validationErrors(...arg);
+  getModel() {
+    return this.form.getModel();
   }
 
   updateInputsWithError(...arg) {
@@ -34,7 +34,7 @@ class Form extends Component {
   }
 
   render() {
-    const { prefixCls, inline, layout, className, ...props } = this.props;
+    const { prefixCls, layout, className, ...props } = this.props;
     const cn = classNames({
       [`${prefixCls}-${layout}`]: !!layout,
       [className]: !!className
