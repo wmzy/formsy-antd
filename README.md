@@ -1,6 +1,6 @@
 # formsy-antd 
 
-这个组件库是对 [ant-design](https://github.com/ant-design) form 组件的 [formsy-react](https://github.com/christianalfoni/formsy-react) 包装.
+这个组件库是对 [ant-design](https://github.com/ant-design) form 组件的 [formsy-react](https://github.com/formsy-react/formsy-react) 包装.
 
 ## Installation
 
