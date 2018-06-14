@@ -1,9 +1,7 @@
 import React from 'react';
-import _ from 'lodash/fp';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
-import { withState } from '@dump247/storybook-state';
 import { FormItem, Form, DatePicker, TimePicker } from 'formsy-antd';
 import { Button } from 'antd';
 import './styles.css';
@@ -11,10 +9,8 @@ import './styles.css';
 const MonthPicker = DatePicker.MonthPicker;
 const RangePicker = DatePicker.RangePicker;
 
-const withState2 = _.curry(withState);
-
 function TimeRelatedControlsForm() {
-  const handleSearch = fieldsValue => {
+  const handleSubmit = fieldsValue => {
     const rangeValue = fieldsValue['range-picker'];
     const rangeTimeValue = fieldsValue['range-time-picker'];
     const values = {
@@ -45,7 +41,7 @@ function TimeRelatedControlsForm() {
 
   return (<div>
     <Form
-      onSubmit={handleSearch}
+      onSubmit={handleSubmit}
     >
       <FormItem
         {...formItemLayout}
