@@ -8,3 +8,5 @@ export Checkbox from './checkbox';
 export CheckboxGroup from './checkbox-group';
 export RadioGroup from './radio-group';
 export Slider from './slider';
+export DatePicker from './date-picker';
+export TimePicker from './time-picker';
