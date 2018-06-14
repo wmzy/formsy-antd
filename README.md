@@ -1,59 +1,85 @@
 # formsy-antd 
 
-这个组件库是对 [ant-design](https://github.com/ant-design) form 组件的 [formsy-react](https://github.com/formsy-react/formsy-react) 包装.
+This library is a wrapper for [ant-design](https://github.com/ant-design/ant-design) form components to allow them to be used with 
+ [formsy-react](https://github.com/formsy-react/formsy-react).
 
 ## Installation
 
 To add formsy-antd to you package.json and install it, run:
 
 ```
-$ npm install --save formsy-antd
+$ npm i formsy-antd
 ```
 
 You will also need to add formsy-react if not already installed:
 
 ```
-$ npm install --save formsy-react
+$ npm i formsy-react
 ```
 
 
 ## Usage
 
-### ES6 Imports
+```js
+import {Form, FormItem, Input} from 'formsy-antd';
+function MyForm() {
+  return (
+    <Form onSubmit={action('submit')}>
+      <FormItem required={true} label="Username">
+        <Input
+          name="name"
+          value="wmzy"
+          validations="minLength:4"
+          validationError="minLength:4"
+        />
+      </FormItem>
+      <button type="submit">submit</button>
+    </Form>
+  );
+}
+```
+And import stylesheets manually:
 
 ```js
-import Input from 'formsy-antd/lib/input'; // 按需加载
+import 'antd/dist/antd.css';  // or 'antd/dist/antd.less'
 ```
+### Use modularized formsy-antd
 
-OR:
+#### Use [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) (Recommended)
 
 ```js
-import { Input, FormItem, Form } from 'formsy-antd';
+// .babelrc or babel-loader option
+{
+  "plugins": [
+    ["import", { "libraryName": "formsy-antd", "style": "css" }] // `style: true` for less
+  ]
+}
 ```
+This allows you to import components from antd without having to manually import the corresponding stylesheet. The antd-babel-plugin will automatically import stylesheets.
 
-**注意**：需要引入antd样式(或使用 <del>[babel-plugin-antd](https://github.com/ant-design/babel-plugin-antd)</del> [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)插件)：
 ```js
-import 'antd/dist/antd.css'
+// import js and css modularly, parsed by babel-plugin-import
+import { DatePicker } from 'formsy-antd';
 ```
-参考：http://ant.design/docs/react/introduce
+#### Manually import
 
-### others
-提供了一个工具方法来方便包装一些简单的组件(支持 onChange 和 value 属性)：
 ```js
-import Slider from 'antd/lib/slider';
-import {formsyComponent} from 'formsy-antd/lib/util';
-
-const FormsySlider = formsyComponent(Slider, 0);
+import DatePicker from 'formsy-antd/lib/date-picker';  // for js
+import 'antd/lib/date-picker/style/css';        // for css
+// import 'antd/lib/date-picker/style';         // that will import less
 ```
+See also: http://ant.design/docs/react/introduce
 
-### Todos
-0. 单元测试
-0. 支持更多的表单控件
+### Wrap Customized Form Controls
 
+There are some functions help you to wrap customized form controls.
+
+```js
+import Input from 'antd/lib/input';
+import {mappingChangeEvent, formsyComponent} from 'formsy-antd/lib/util';
+
+export default formsyComponent(mappingChangeEvent(Input, ev => ev.target.value), '');
+```
 
 ### Examples
-See [examples dir](https://github.com/wmzy/formsy-antd/tree/master/examples).
-
-## Known Issues
-
-
+See [storybook](https://wmzy.github.io/formsy-antd/).
