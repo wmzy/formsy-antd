@@ -89,7 +89,6 @@ function CustomizedFormControlsForm() {
   };
 
   const checkPrice = (_, value) => {
-    action('check')(value, value.number, value.number > 0);
     return value.number > 0 || 'Price must greater than zero!';
   };
 
