@@ -2,33 +2,47 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
-import { Input, FormItem, Form, Select, Slider } from 'formsy-antd';
+import { Radio } from 'antd';
+import { Input, FormItem, Form, Select, Slider, RadioGroup } from 'formsy-antd';
 
 const Option = Select.Option;
 
 function BasicForm() {
+  const plainOptions = ['Apple', 'Pear', 'Orange'];
+
   return (
     <Form onSubmit={action('submit')}>
-      <FormItem required={true} label="name">
+      <FormItem required label="name">
         <Input
           name="name"
           value="wmzy"
           validations="minLength:4"
           validationError="minLength:4"
-          required={true}
+          required
         />
       </FormItem>
-      <FormItem required={true} label="sports">
-        <Select name="sports" placeholder="select" tags required={true}>
+      <FormItem required label="sports">
+        <Select name="sports" placeholder="select" tags
+          required
+        >
           <Option key="swim" value="swim">
-              swim
+            swim
           </Option>
           <Option key="football" value="football">
-              football
+            football
           </Option>
         </Select>
       </FormItem>
-      <FormItem required={true} label="slider">
+      <FormItem required label="Gender">
+        <RadioGroup name="gender" value="m">
+          <Radio value="m">Man</Radio>
+          <Radio value="f">female</Radio>
+        </RadioGroup>
+      </FormItem>
+      <FormItem required label="fruit">
+        <RadioGroup name="fruit" options={plainOptions} value={plainOptions[1]} />
+      </FormItem>
+      <FormItem required label="slider">
         <Slider
           name="slider"
           min={0}
