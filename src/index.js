@@ -1,6 +1,7 @@
 export Form from './form';
 export FormItem from './form-item';
 export Input from './input';
+export TextArea from './text-area';
 export InputNumber from './input-number';
 export Select from './select';
 export Switch from './switch';

@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
 import { Radio } from 'antd';
-import { Input, FormItem, Form, Select, Slider, RadioGroup } from 'formsy-antd';
+import { Input, TextArea, FormItem, Form, Select, Slider, RadioGroup } from 'formsy-antd';
 
 const Option = Select.Option;
 
@@ -12,7 +12,7 @@ function BasicForm() {
 
   return (
     <Form onSubmit={action('submit')}>
-      <FormItem required label="name">
+      <FormItem required label="Name">
         <Input
           name="name"
           value="wmzy"
@@ -21,7 +21,7 @@ function BasicForm() {
           required
         />
       </FormItem>
-      <FormItem required label="sports">
+      <FormItem required label="Sports">
         <Select name="sports" placeholder="select" tags
           required
         >
@@ -39,10 +39,17 @@ function BasicForm() {
           <Radio value="f">female</Radio>
         </RadioGroup>
       </FormItem>
-      <FormItem required label="fruit">
+      <FormItem required label="Fruit">
         <RadioGroup name="fruit" options={plainOptions} value={plainOptions[1]} />
       </FormItem>
-      <FormItem required label="slider">
+      <FormItem required label="About">
+        <TextArea
+          name="about"
+          rows={4}
+          value="..."
+        />
+      </FormItem>
+      <FormItem required label="Slider">
         <Slider
           name="slider"
           min={0}
