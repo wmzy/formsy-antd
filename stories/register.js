@@ -10,9 +10,7 @@ import { Row, Col, Icon, Button, Tooltip } from 'antd';
 const Option = Select.Option;
 const AutoCompleteOption = AutoComplete.Option;
 
-const withState2 = _.curry(withState);
-
-function RegistrationForm(store) {
+function RegistrationForm({store}) {
   const residences = [
     {
       value: 'zhejiang',
@@ -201,5 +199,5 @@ function RegistrationForm(store) {
 storiesOf('Form', module)
   .add('register', _.pipe(
     withInfo('用户填写必须的信息以注册新用户。'),
-    withState2({ confirmDirty: false, autoCompleteResult: [] })
+    withState({ confirmDirty: false, autoCompleteResult: [] })
   )(RegistrationForm));

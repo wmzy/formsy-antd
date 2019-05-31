@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { FormItem, Form } from 'formsy-antd';
-import { formsyComponent } from 'formsy-antd/lib/util';
+import { formsyComponent } from 'formsy-antd/src/util';
 import { Input, Select, Button } from 'antd';
 import './styles.css';
 

@@ -8,9 +8,7 @@ import { Input, RadioGroup, FormItem, Form } from 'formsy-antd';
 import { Modal, Button, Radio } from 'antd';
 import './styles.css';
 
-const withState2 = _.curry(withState);
-
-function CollectionCreateForm(store) {
+function CollectionCreateForm({store}) {
   let form;
   const showModal = () => {
     store.set({ visible: true });
@@ -64,5 +62,5 @@ function CollectionCreateForm(store) {
 storiesOf('Form', module)
   .add('form-in-modal', _.pipe(
     withInfo('当用户访问一个展示了某个列表的页面，想新建一项但又不想跳转页面时，可以用 Modal 弹出一个表单，用户填写必要信息后创建新的项。'),
-    withState2({ visible: false })
+    withState({ visible: false })
   )(CollectionCreateForm));

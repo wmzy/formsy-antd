@@ -7,9 +7,7 @@ import { withState } from '@dump247/storybook-state';
 import { Input, FormItem, Form } from 'formsy-antd';
 import { Icon, Button } from 'antd';
 
-const withState2 = _.curry(withState);
-
-function HorizontalLoginForm(store) {
+function HorizontalLoginForm({store}) {
   const handleSubmit = data => {
     action('submit')(data);
   };
@@ -60,5 +58,5 @@ function HorizontalLoginForm(store) {
 storiesOf('Form', module)
   .add('horizontal-login', _.pipe(
     withInfo('水平登录栏，常用在顶部导航栏中。'),
-    withState2({valid: false})
+    withState({valid: false})
   )(HorizontalLoginForm));

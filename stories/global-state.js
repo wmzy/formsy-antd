@@ -7,9 +7,7 @@ import { withState } from '@dump247/storybook-state';
 import { Input, FormItem, Form } from 'formsy-antd';
 import './styles.css';
 
-const withState2 = _.curry(withState);
-
-function GlobalStateForm(store) {
+function GlobalStateForm({store}) {
   const handleChange = data => {
     action('change')(data);
     store.set({ data });
@@ -39,5 +37,5 @@ function GlobalStateForm(store) {
 storiesOf('Form', module)
   .add('global-state', _.pipe(
     withInfo('表单数据存储于上层组件'),
-    withState2({ data: {username: 'benjycui'} })
+    withState({ data: {username: 'benjycui'} })
   )(GlobalStateForm));

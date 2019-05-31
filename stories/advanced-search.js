@@ -8,9 +8,7 @@ import { Input, FormItem, Form } from 'formsy-antd';
 import { Row, Col, Icon, Button } from 'antd';
 import './styles.css';
 
-const withState2 = _.curry(withState);
-
-function AdvancedSearchForm(store) {
+function AdvancedSearchForm({store}) {
   const handleSearch = data => {
     action('submit')(data);
   };
@@ -69,5 +67,5 @@ function AdvancedSearchForm(store) {
 storiesOf('Form', module)
   .add('advanced-search', _.pipe(
     withInfo('三列栅格式的表单排列方式，常用于数据表格的高级搜索。'),
-    withState2({ expand: false })
+    withState({ expand: false })
   )(AdvancedSearchForm));

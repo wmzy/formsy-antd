@@ -8,11 +8,9 @@ import { Input, FormItem, Form } from 'formsy-antd';
 import { Button, Icon } from 'antd';
 import './styles.css';
 
-const withState2 = _.curry(withState);
-
 let uuid = 0;
 
-function DynamicFieldSet(store) {
+function DynamicFieldSet({store}) {
   const remove = k => {
     const {keys} = store.state;
     // We need at least one passenger
@@ -96,5 +94,5 @@ function DynamicFieldSet(store) {
 storiesOf('Form', module)
   .add('dynamic-form-item', _.pipe(
     withInfo('动态增加、减少表单项。'),
-    withState2({ keys: [] })
+    withState({ keys: [] })
   )(DynamicFieldSet));
