@@ -1,7 +1,5 @@
 import React from 'react';
-import _ from 'lodash/fp';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { withState } from '@dump247/storybook-state';
 import { Input, FormItem, Form } from 'formsy-antd';
@@ -35,7 +33,4 @@ function GlobalStateForm({store}) {
 }
 
 storiesOf('Form', module)
-  .add('global-state', _.pipe(
-    withInfo('表单数据存储于上层组件'),
-    withState({ data: {username: 'benjycui'} })
-  )(GlobalStateForm));
+  .add('global-state', withState({ data: {username: 'benjycui'} })(GlobalStateForm), {info: '表单数据存储于上层组件'});

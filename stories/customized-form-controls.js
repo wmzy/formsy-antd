@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { FormItem, Form } from 'formsy-antd';
 import { formsyComponent } from 'formsy-antd/src/util';
@@ -112,4 +111,4 @@ function CustomizedFormControlsForm() {
 }
 
 storiesOf('Form', module)
-  .add('customized-form-controls', withInfo('自定义表单控件')(CustomizedFormControlsForm));
+  .add('customized-form-controls', CustomizedFormControlsForm, {info: '自定义表单控件'});

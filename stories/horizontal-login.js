@@ -1,7 +1,5 @@
 import React from 'react';
-import _ from 'lodash/fp';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { withState } from '@dump247/storybook-state';
 import { Input, FormItem, Form } from 'formsy-antd';
@@ -56,7 +54,4 @@ function HorizontalLoginForm({store}) {
 }
 
 storiesOf('Form', module)
-  .add('horizontal-login', _.pipe(
-    withInfo('水平登录栏，常用在顶部导航栏中。'),
-    withState({valid: false})
-  )(HorizontalLoginForm));
+  .add('horizontal-login', withState({valid: false})(HorizontalLoginForm), {info: '水平登录栏，常用在顶部导航栏中。'});

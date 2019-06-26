@@ -1,7 +1,5 @@
 import React from 'react';
-import _ from 'lodash/fp';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { withState } from '@dump247/storybook-state';
 import { Input, FormItem, Form } from 'formsy-antd';
@@ -92,7 +90,8 @@ function DynamicFieldSet({store}) {
 }
 
 storiesOf('Form', module)
-  .add('dynamic-form-item', _.pipe(
-    withInfo('动态增加、减少表单项。'),
-    withState({ keys: [] })
-  )(DynamicFieldSet));
+  .add(
+    'dynamic-form-item',
+    withState({ keys: [] })(DynamicFieldSet),
+    {info: '动态增加、减少表单项。'}
+  );

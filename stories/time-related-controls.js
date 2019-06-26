@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { FormItem, Form, DatePicker, TimePicker } from 'formsy-antd';
 import { Button } from 'antd';
@@ -118,4 +117,4 @@ function TimeRelatedControlsForm() {
 }
 
 storiesOf('Form', module)
-  .add('time-related-controls', withInfo('时间类控件')(TimeRelatedControlsForm));
+  .add('time-related-controls', TimeRelatedControlsForm, {info: '时间类控件'});

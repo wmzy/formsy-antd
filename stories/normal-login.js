@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { Input, FormItem, Form, Checkbox } from 'formsy-antd';
 import { Icon, Button } from 'antd';
@@ -52,4 +51,4 @@ function NormalLoginForm() {
 }
 
 storiesOf('Form', module)
-  .add('normal-login', withInfo('普通的登录框，可以容纳更多的元素。')(NormalLoginForm));
+  .add('normal-login', NormalLoginForm, {info: '普通的登录框，可以容纳更多的元素。'});

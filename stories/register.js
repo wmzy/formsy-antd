@@ -1,7 +1,6 @@
 import React from 'react';
 import _ from 'lodash/fp';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { withState } from '@dump247/storybook-state';
 import { Input, FormItem, Form, Checkbox, Select, AutoComplete, Cascader } from 'formsy-antd';
@@ -197,7 +196,8 @@ function RegistrationForm({store}) {
 }
 
 storiesOf('Form', module)
-  .add('register', _.pipe(
-    withInfo('用户填写必须的信息以注册新用户。'),
-    withState({ confirmDirty: false, autoCompleteResult: [] })
-  )(RegistrationForm));
+  .add(
+    'register',
+    withState({ confirmDirty: false, autoCompleteResult: [] })(RegistrationForm),
+    {info: '用户填写必须的信息以注册新用户。'}
+  );

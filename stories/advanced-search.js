@@ -1,7 +1,5 @@
 import React from 'react';
-import _ from 'lodash/fp';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { withState } from '@dump247/storybook-state';
 import { Input, FormItem, Form } from 'formsy-antd';
@@ -65,7 +63,8 @@ function AdvancedSearchForm({store}) {
 }
 
 storiesOf('Form', module)
-  .add('advanced-search', _.pipe(
-    withInfo('三列栅格式的表单排列方式，常用于数据表格的高级搜索。'),
-    withState({ expand: false })
-  )(AdvancedSearchForm));
+  .add(
+    'advanced-search',
+    withState({ expand: false })(AdvancedSearchForm),
+    {info: '三列栅格式的表单排列方式，常用于数据表格的高级搜索。'}
+  );

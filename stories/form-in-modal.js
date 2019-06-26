@@ -1,7 +1,5 @@
 import React from 'react';
-import _ from 'lodash/fp';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { withState } from '@dump247/storybook-state';
 import { Input, RadioGroup, FormItem, Form } from 'formsy-antd';
@@ -60,7 +58,8 @@ function CollectionCreateForm({store}) {
 }
 
 storiesOf('Form', module)
-  .add('form-in-modal', _.pipe(
-    withInfo('当用户访问一个展示了某个列表的页面，想新建一项但又不想跳转页面时，可以用 Modal 弹出一个表单，用户填写必要信息后创建新的项。'),
-    withState({ visible: false })
-  )(CollectionCreateForm));
+  .add(
+    'form-in-modal',
+    withState({ visible: false })(CollectionCreateForm),
+    {info: '当用户访问一个展示了某个列表的页面，想新建一项但又不想跳转页面时，可以用 Modal 弹出一个表单，用户填写必要信息后创建新的项。'}
+  );

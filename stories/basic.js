@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withInfo } from '@storybook/addon-info';
 import { Radio } from 'antd';
 import { Input, TextArea, FormItem, Form, Select, Slider, RadioGroup } from 'formsy-antd';
 
@@ -65,6 +64,4 @@ function BasicForm() {
 
 
 storiesOf('Form', module)
-  .add('basic', withInfo(`
-  Basic usage
-  `)(BasicForm));
+  .add('basic', BasicForm, {info: 'Basic usage'});
