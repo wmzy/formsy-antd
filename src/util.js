@@ -31,6 +31,9 @@ export function omitFormsyProps(props) {
   } = props;
   return rest;
 }
+function getDisplayName(com, prefix) {
+  return `${prefix}(${com.displayName || com.name})`;
+}
 
 export function pickSubComponent(OriginalComponent) {
   const subComponents = {};
@@ -44,13 +47,15 @@ export function pickSubComponent(OriginalComponent) {
 }
 
 export function mappingChangeEvent(OriginalComponent, mapper, eventName = 'onChange') {
-  return function FormsyableComponent(props) {
+  function FormsyableComponent(props) {
     const fn = props[eventName];
     const p = {
       [eventName]: fn && ((...params) => fn(mapper(...params)))
     };
     return (<OriginalComponent {...props} {...p} />);
-  };
+  }
+  FormsyableComponent.displayName = getDisplayName(OriginalComponent, 'MappingEvent');
+  return FormsyableComponent;
 }
 
 export function formsyComponent(OriginalComponent, noValue) {
@@ -73,7 +78,7 @@ export function formsyComponent(OriginalComponent, noValue) {
     componentDidUpdate() {
       if (!this.context.formsyAntd) return;
 
-      const {isPristine, isValidValue} = this.props;
+      const { isPristine, isValidValue } = this.props;
       const message = isPristine() || isValidValue() ? null : this.props.getErrorMessage();
       if (this.message === message) return;
       this.message = message;
@@ -100,5 +105,9 @@ export function formsyComponent(OriginalComponent, noValue) {
     }
   }
 
-  return Object.assign(withFormsy(FormsyComponent), pickSubComponent(OriginalComponent));
+  return Object.assign(
+    withFormsy(FormsyComponent),
+    pickSubComponent(OriginalComponent),
+    { displayName: getDisplayName(OriginalComponent, 'Formsy') }
+  );
 }
