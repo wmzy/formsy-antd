@@ -6,11 +6,16 @@ import { Input, TextArea, FormItem, Form, Select, Slider, RadioGroup } from 'for
 
 const Option = Select.Option;
 
+const ref = React.createRef();
+function handleSubmit() {
+  action('validSubmit')(ref.current.getModel());
+}
+
 function BasicForm() {
   const plainOptions = ['Apple', 'Pear', 'Orange'];
 
   return (
-    <Form onSubmit={action('submit')}>
+    <Form ref={ref} onSubmit={action('submit')} onValidSubmit={handleSubmit}>
       <FormItem required label="Name">
         <Input
           name="name"
